@@ -77,7 +77,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>cd $(ProjectDir)bin\$(Configuration)
-xcopy /y *.* ..\..\..\..\Drop\$(Configuration)</PostBuildEvent>
+xcopy /y *.* ..\..\..\..\Drop\$(Configuration)
+cd ..\..\..\..\OuterReferences\$(Configuration)
+xcopy /y *.exe ..\..\Drop\$(Configuration)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
