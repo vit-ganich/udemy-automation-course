@@ -36,8 +36,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="WebDriver">
+      <HintPath>..\..\OuterReferences\$(Configuration)\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\..\OuterReferences\$(Configuration)\WebDriver.Support.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriverWrapper">
-      <HintPath>..\..\OuterReferences\Debug\WebDriverWrapper.dll</HintPath>
+      <HintPath>..\..\OuterReferences\$(Configuration)\WebDriverWrapper.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Choose>
@@ -48,12 +54,15 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeleniumBasicImplementationSamples.cs" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
