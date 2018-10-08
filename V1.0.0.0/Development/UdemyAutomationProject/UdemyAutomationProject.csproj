@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{684D6494-0B6D-4F5E-81CF-21BB99C6795D}</ProjectGuid>
+    <ProjectGuid>{EE59B832-22CB-4879-B9AD-360CE58CD849}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UdemyAutomationProject</RootNamespace>
@@ -42,9 +42,6 @@
     <Reference Include="WebDriver.Support">
       <HintPath>..\..\OuterReferences\$(Configuration)\WebDriver.Support.dll</HintPath>
     </Reference>
-    <Reference Include="WebDriverWrapper">
-      <HintPath>..\..\OuterReferences\$(Configuration)\WebDriverWrapper.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,6 +60,26 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SeleniumBasicImplementationSamples.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebDriverWrapper\WebDriverWrapper.csproj">
+      <Project>{392e39bf-6e3c-433a-83e7-10c8294574af}</Project>
+      <Name>WebDriverWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\WebDrivers\ChromeDriver.exe">
+      <Link>ChromeDriver.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\WebDrivers\GeckoDriver.exe">
+      <Link>GeckoDriver.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\..\WebDrivers\IEDriverServer.exe">
+      <Link>IEDriverServer.exe</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

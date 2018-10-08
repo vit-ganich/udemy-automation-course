@@ -2,13 +2,18 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
+using System.Threading;
+using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Chrome;
 
 namespace UdemyAutomationProject
 {
-    /// <summary>
-    /// Summary description for SeleniumBasicImplementationSamples
-    /// </summary>
     [TestClass]
+    //[DeploymentItem("ChromeDriver.exe")]
+    //[DeploymentItem("GeckoDriver.exe")]
+    //[DeploymentItem("IEDriverServer.exe")]
     public class SeleniumBasicImplementationSamples
     {
         public SeleniumBasicImplementationSamples()
@@ -17,53 +22,24 @@ namespace UdemyAutomationProject
             // TODO: Add constructor logic here
             //
         }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        public TestContext TestContext { get; set; }
 
         [TestMethod]
         public void WebDriverSample()
         {
-            //
-            // TODO: Add test logic here
-            //
+            // We use an interface IWebDriver
+            // webdriver.exe need to be in the same folder as the test container
+            IWebDriver webDriver = new FirefoxDriver();
+            Thread.Sleep(1000);
+            webDriver.Dispose();
+
+            webDriver = new InternetExplorerDriver();
+            Thread.Sleep(1000);
+            webDriver.Dispose();
+
+            webDriver = new ChromeDriver();
+            Thread.Sleep(1000);
+            webDriver.Dispose();
         }
     }
 }
